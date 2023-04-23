@@ -1,0 +1,63 @@
+{
+  "name": "zqmd",
+  "version": "0.0.1",
+  "description": "A Quasar Project",
+  "productName": "zqmd",
+  "author": "wangjing",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.ts,.vue ./",
+    "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@capacitor/android": "^4.7.3",
+    "@capacitor/browser": "^4.1.1",
+    "@capacitor/camera": "^4.1.4",
+    "@capacitor/cli": "^4.7.3",
+    "@capacitor/core": "^4.7.3",
+    "@capacitor/filesystem": "^4.1.4",
+    "@capacitor/geolocation": "^4.1.0",
+    "@capacitor/status-bar": "^4.1.1",
+    "@capacitor/toast": "^4.1.0",
+    "@ionic/pwa-elements": "^3.1.1",
+    "@quasar/extras": "^1.0.0",
+    "axios": "^1.2.1",
+    "cesium": "^1.104.0",
+    "cropperjs": "^1.5.13",
+    "exif-js": "^2.3.0",
+    "less": "^4.1.3",
+    "mitt": "^3.0.0",
+    "node-less": "^1.0.0",
+    "pinia": "^2.0.11",
+    "quasar": "^2.6.0",
+    "vant": "^4.2.0",
+    "vue": "^3.0.0",
+    "vue-cesium": "^3.1.7",
+    "vue-easy-uploader": "^1.0.6",
+    "vue-i18n": "^9.2.2",
+    "vue-photo-preview": "^1.1.3",
+    "vue-router": "^4.0.0",
+    "vue-wechat-title": "^2.0.7",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@intlify/vite-plugin-vue-i18n": "^3.3.1",
+    "@quasar/app-vite": "^1.0.0",
+    "@types/node": "^12.20.21",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
+    "autoprefixer": "^10.4.2",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4",
+    "vite-plugin-svg-icons": "^1.0.5"
+  },
+  "engines": {
+    "node": "^18 || ^16 || ^14.19",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

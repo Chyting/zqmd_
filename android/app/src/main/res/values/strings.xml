@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">zqmd</string>
+    <string name="title_activity_main">zqmd</string>
+    <string name="package_name">com.cetc.zqmd</string>
+    <string name="custom_url_scheme">com.cetc.zqmd</string>
+</resources>
