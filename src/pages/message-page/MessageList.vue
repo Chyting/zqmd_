@@ -181,42 +181,4 @@ const router = useRouter();
 const openEdit = (name: string) => {
   router.push({ path: '/messageEdit', query: { id: name } });
 };
-
-// const list: Array<any> = new Array<any>();
-
-// for (let i = 0; i++; i < 12) {
-//   line.id = 1;
-//   line.name = '王静';
-//   line.key = '王静';
-//   line.lastMessage = '你今天吃饭了吗';
-//   line.time = '1分钟前';
-//   line.to = '/messageEdit';
-//   // line.id = i;
-//   // if (i % 2 === 0) {
-//   //   (line.name = '王静'),
-//   //     (line.key = '王静'),
-//   //     (line.lastMessage = '你今天吃饭了吗'),
-//   //     (line.time = '1分钟前'),
-//   //     (line.to = '/messageEdit');
-//   // } else if (i % 3 == 0) {
-//   //   (line.name = '李倩'),
-//   //     (line.key = '李倩'),
-//   //     (line.lastMessage = '你今天加班了吗'),
-//   //     (line.time = '30分钟前'),
-//   //     (line.to = '/messageEdit');
-//   // } else if (i % 5 == 0) {
-//   //   (line.name = '王粉粉'),
-//   //     (line.key = '王粉粉'),
-//   //     (line.lastMessage = '今天饭真好吃'),
-//   //     (line.time = '一天前'),
-//   //     (line.to = '/messageEdit');
-//   // } else {
-//   //   (line.name = '严迪'),
-//   //     (line.key = '严迪'),
-//   //     (line.lastMessage = '严迪真好看呀'),
-//   //     (line.time = '一个月前'),
-//   //     (line.to = '/messageEdit');
-//   // }
-//   list.push(line);
-// }
 </script>

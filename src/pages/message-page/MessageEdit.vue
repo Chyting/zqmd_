@@ -1,6 +1,7 @@
 <template>
   <div class="q-py-md">
     <q-list :model-value="messageLine">
+      <q-chat-message label="4月19日 10:10" />
       <q-item v-for="messageLine in messageList" :key="messageLine.id">
         <div class="full-width" justify-center>
           <q-chat-message
@@ -8,65 +9,63 @@
             :avatar="messageLine.ava"
             :sent="messageLine.sent"
             :stamp="messageLine.stamp"
+            :bg-color="messageLine.sent ? 'green-4' : 'grey-3'"
           />
         </div>
       </q-item>
     </q-list>
-  </div>
-
-  <div>
-    <q-toolbar
-      class="q-pt-sm q-pb-md bg-grey-11 text-white rounded-borders footer absolute-bottom"
-    >
-      <q-input
-        class="bg-white full-width"
-        dark
-        dense
-        standout
-        v-model="text"
-        autogrow
+    <div>
+      <q-toolbar
+        class="q-pt-sm q-pb-md bg-grey-11 text-white rounded-borders footer absolute-bottom"
       >
-      </q-input>
-      <q-btn
-        v-show="isshowAdd"
-        round
-        dense
-        flat
-        icon="add"
-        class="q-ml-sm bg-grey-5"
-        @click="addClick(true)"
-      />
+        <q-input
+          class="bg-white full-width"
+          dark
+          dense
+          standout
+          v-model="text"
+          autogrow
+        >
+        </q-input>
+        <q-btn
+          v-show="isshowAdd"
+          round
+          dense
+          flat
+          icon="add"
+          class="q-ml-sm bg-grey-5"
+          @click="addClick(true)"
+        />
 
-      <q-btn
-        v-show="isshowSend"
-        round
-        flat
-        label="发送"
-        class="q-ml-sm bg-theme"
-        @click="sendClick"
-      />
-    </q-toolbar>
+        <q-btn
+          v-show="isshowSend"
+          round
+          flat
+          label="发送"
+          class="q-ml-sm bg-theme"
+          @click="sendClick"
+        />
+      </q-toolbar>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { useQuasar } from 'quasar';
-import { useRoute } from 'vue-router';
 import { Filesystem } from '@capacitor/filesystem';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
-import mittBus from 'src/utils/mittBus';
+// import mittBus from 'src/utils/mittBus';
 
 const messageLine = ref('main');
 
 const $q = useQuasar();
-const route = useRoute();
 
 //动态设置标题
-onMounted(() => {
-  mittBus.emit('setTitle', route.query.id);
-});
+// onMounted(() => {
+//   mittBus.emit('setTitle', route.query.id);
+// });
 
 const text = ref<string>('');
 
@@ -78,7 +77,7 @@ watch(text, () => {
   isshowAdd.value = text.value === '';
 });
 
-const messageList = [
+const messageList = ref<array>([
   {
     id: 1,
     name: '王静',
@@ -93,9 +92,19 @@ const messageList = [
     name: '李倩',
     key: '李倩',
     text: '今天星期几',
-    stamp: '昨天',
+    stamp: '50秒前',
     sent: false,
     ava: 'https://cdn.quasar.dev/img/avatar1.jpg',
+  },
+
+  {
+    id: 4,
+    name: '王静',
+    key: '王静',
+    text: '后台开发完了吗',
+    stamp: '20分钟前',
+    sent: true,
+    ava: 'https://cdn.quasar.dev/img/avatar.png',
   },
   {
     id: 3,
@@ -106,16 +115,7 @@ const messageList = [
     sent: false,
     ava: 'https://cdn.quasar.dev/img/avatar1.jpg',
   },
-  {
-    id: 4,
-    name: '王静',
-    key: '王静',
-    text: '后台开发完了吗',
-    stamp: '20分钟前',
-    sent: true,
-    ava: 'https://cdn.quasar.dev/img/avatar.png',
-  },
-];
+]);
 
 const sendClick = () => {
   text.value = '';

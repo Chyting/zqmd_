@@ -24,7 +24,7 @@
           <div
             class="col-8 text-center text-h6 text-white q-pl-lg q-pr-sm header-title"
           >
-            <LayoutHeaderTitle :title="pageTitle" />
+            <LayoutHeaderTitle />
             <!-- {{ pageTitle }} -->
           </div>
 
@@ -67,44 +67,13 @@ export default defineComponent({
       required: true,
       default: false,
     },
-    // pageTitle: {
-    //   type: String,
-    //   required: true,
-    //   default: '',
-    // },
   },
 
   setup(props) {
     //设置标题
     const router = useRouter();
-    const route = useRoute();
-
-    let pageTitle = ref();
-    pageTitle = computed(() => route.meta.title);
-
-    const setTitle = (msg) => {
-      console.log('setTitle1', route.query.id);
-      if (msg == null || msg === '') {
-        pageTitle.value = computed(() => route.meta.title);
-        console.log('setTitle2', pageTitle.value);
-      } else {
-        pageTitle.value = msg;
-        console.log('setTitle3', msg);
-        console.log('setTitle4', pageTitle.value);
-      }
-    };
-
-    // 启用监听
-    mittBus.on('setTitle', setTitle);
-
-    // 在组件卸载之前移除监听
-    onBeforeUnmount(() => {
-      console.log('setTitle3', setTitle);
-      mittBus.off('setTitle', setTitle);
-    });
 
     const goBack = () => router.go(-1);
-
     const scrollTopPosition = ref<number>(0);
 
     const isSubheaderHidden = computed((): boolean => {
@@ -129,8 +98,6 @@ export default defineComponent({
 
     return {
       goBack,
-      pageTitle,
-
       onScroll,
       scrollTopPosition,
       isSubheaderHidden,

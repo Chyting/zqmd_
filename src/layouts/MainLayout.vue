@@ -50,7 +50,7 @@ if (isShowHeader.value) {
 }
 
 //当路由地址不是主界面tab时，隐藏footer,并显示返回键
-const footerPages = ['/home', '/message', '/list', '/my'];
+const footerPages = ['/home', '/message', '/my'];
 const isShowFooter = computed(
   () => footerPages.findIndex((item) => item === route.path) === -1
 );
