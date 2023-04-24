@@ -25,7 +25,6 @@
             class="col-8 text-center text-h6 text-white q-pl-lg q-pr-sm header-title"
           >
             <LayoutHeaderTitle />
-            <!-- {{ pageTitle }} -->
           </div>
 
           <div class="col-2 text-center q-mr-md q-ml-sm">
@@ -41,68 +40,48 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, computed, onBeforeUnmount } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+<script lang="ts" setup>
+import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
 
 import LayoutHeaderHome from './LayoutHeaderHome.vue';
 import LayoutHeaderTitle from 'src/components/layout/header/parts/LayoutHeaderTitle.vue';
 import QuasarScrollInterface from 'src/types/quasarScrollInterface.js';
 
-import mittBus from 'src/utils/mittBus';
-
-export default defineComponent({
-  name: 'LayoutHeader',
-
-  components: { LayoutHeaderHome, LayoutHeaderTitle },
-
-  props: {
-    isHideHeader: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-    isBack: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
+const props = defineProps({
+  isHideHeader: {
+    type: Boolean,
+    required: true,
+    default: false,
   },
-
-  setup(props) {
-    //设置标题
-    const router = useRouter();
-
-    const goBack = () => router.go(-1);
-    const scrollTopPosition = ref<number>(0);
-
-    const isSubheaderHidden = computed((): boolean => {
-      if (props.isHideHeader) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-
-    const onScroll = (value: QuasarScrollInterface): void => {
-      scrollTopPosition.value = value.position.top;
-    };
-
-    const getRootHeaderBackground = computed(() => {
-      if (props.isHideHeader) {
-        return 'linear-gradient(#00000000, #00000000) !important';
-      } else {
-        return 'linear-gradient(#199745, #199745) !important';
-      }
-    });
-
-    return {
-      goBack,
-      onScroll,
-      scrollTopPosition,
-      isSubheaderHidden,
-      getRootHeaderBackground,
-    };
+  isBack: {
+    type: Boolean,
+    required: true,
+    default: false,
   },
+});
+const router = useRouter();
+
+const goBack = () => router.go(-1);
+const scrollTopPosition = ref<number>(0);
+
+const isSubheaderHidden = computed((): boolean => {
+  if (props.isHideHeader) {
+    return true;
+  } else {
+    return false;
+  }
+});
+
+const onScroll = (value: QuasarScrollInterface): void => {
+  scrollTopPosition.value = value.position.top;
+};
+
+const getRootHeaderBackground = computed(() => {
+  if (props.isHideHeader) {
+    return 'linear-gradient(#00000000, #00000000) !important';
+  } else {
+    return 'linear-gradient(#199745, #199745) !important';
+  }
 });
 </script>
