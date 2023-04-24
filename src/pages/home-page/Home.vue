@@ -9,9 +9,10 @@
 <template>
   <q-page class="full-width" style="overflow: hidden">
     <div class="map">
-      <vc-config-provider :cesium-path="vcConfig.cesiumPath">
+
         <vc-viewer
           @ready="onViewerReady"
+          :cesium-path="vcConfig.cesiumPath"
           :showCredit="false"
           :infoBox="false"
           style="height: 1000px; width: 100%"
@@ -38,7 +39,7 @@
             ></vc-imagery-provider-tianditu>
           </vc-layer-imagery>
         </vc-viewer>
-      </vc-config-provider>
+
 
       <!-- <q-icon name="eva-layers-outline" size="30px" @click="typeMap" /><br /> -->
 
