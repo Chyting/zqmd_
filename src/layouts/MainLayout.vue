@@ -61,8 +61,7 @@ onMounted(() => {
   }
 });
 let transitionName = ref<string>('');
-watch(route, (newVal, oldVal) => {
-  console.log('------', newVal.path, oldVal.path);
+watch(route, () => {
   const baseRouteList = ['/home', '/message', '/my'];
   if (baseRouteList.indexOf(route.path) !== -1) {
     transitionName.value = 'slide-right';

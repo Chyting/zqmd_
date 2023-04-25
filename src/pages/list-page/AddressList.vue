@@ -1,76 +1,67 @@
 <template>
-  <div class="q-pa-md q-gutter-sm" transition-show="slide-left">
-    <!--node-key包含唯一节点id的每个节点对象的属性名
-    //selected 当前所选节点的键
-    @update:selected="treeSelect"//当所选节点更改时发出
-   accordion//允许将树设置为手风琴模式
-   label-key="label"//包含节点标签的每个节点对象的属性名-->
-    <q-tree
-      :nodes="lazy"
-      node-key="label"
-      color="theme"
-      v-model:selected="selected"
-      @update:selected="treeSelect"
-      label-key="label"
-      class="treelist"
-      ref="treeRef"
-      default-expand-all
-    >
-      <template v-slot:default-header="prop">
-        <div class="row items-center">
-          <div class="text-weight-bold text-black">
-            {{ prop.node.label }}
-          </div>
-        </div>
-      </template>
-    </q-tree>
-  </div>
+  <q-page>
+    <!-- <van-index-bar>
+      <van-index-anchor index="A" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+
+      <van-index-anchor index="B" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+
+      ...
+    </van-index-bar> -->
+    <van-index-bar :index-list="indexList">
+      <div v-for="item in filterData" :key="item.id">
+        <van-index-anchor :index="item.index"></van-index-anchor>
+        <van-cell
+          v-for="child in item.children"
+          :key="child.id"
+          :title="child.name"
+        />
+      </div>
+    </van-index-bar>
+  </q-page>
 </template>
 
-<script>
-import { ref } from 'vue';
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import pinyin from 'js-pinyin';
+console.log(pinyin.getFullChars('管理员'));
+console.log(pinyin.getCamelChars('管理员'));
 
-import { useRouter } from 'vue-router';
-
-const nodes = [
+const indexList = ref<Array>([]);
+const filterData = ref<Array>([
   {
-    label: '组织机构',
+    index: 'A',
+    id: 1,
     children: [
-      { label: '九连一分队', lazy: false },
-      { label: '九连二分队', lazy: false },
-      { label: '九连三分队', lazy: false },
-      { label: '八连执勤二分队', lazy: false },
+      { name: '张三', id: 1 },
+      { name: '里斯', id: 2 },
     ],
   },
   {
-    label: '组织席位',
+    index: 'B',
+    id: 2,
     children: [
-      { label: '指挥席', lazy: false },
-      { label: '参谋长', lazy: false },
+      { name: 'wanger', id: 3 },
+      { name: 'Params', id: 4 },
     ],
   },
-];
-export default {
-  setup() {
-    const router = useRouter();
-    const selected = ref('');
-
-    const treeSelect = () => {
-      console.log(selected.value);
-      if (
-        selected.value != null &&
-        selected.value.indexOf('组织机构') === -1 &&
-        selected.value.indexOf('组织席位') === -1
-      ) {
-        router.push({ path: '/messageEdit', query: { id: selected.value } });
-      }
-    };
-
-    return {
-      lazy: ref(nodes),
-      selected,
-      treeSelect,
-    };
+  {
+    index: 'C',
+    id: 2,
+    children: [
+      { name: 'wanger', id: 3 },
+      { name: 'Params', id: 4 },
+    ],
   },
-};
+]);
+onMounted(() => {
+  indexList.value = [...Array(26).keys()].map((i) =>
+    String.fromCharCode(i + 65)
+  );
+});
 </script>
