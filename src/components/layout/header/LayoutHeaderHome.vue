@@ -22,6 +22,16 @@
       round
       label="确定"
     />
+    <q-btn
+      v-show="isShowAddress"
+      behavior="mobile"
+      icon="contact_mail"
+      to="/list"
+      size="13px"
+      color="grey-2"
+      dense
+      flat
+    />
   </span>
 </template>
 
@@ -31,6 +41,7 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const isshowSetting = computed(() => route.path === '/my');
+const isShowAddress = computed(() => route.path === '/message');
 
 const showTextPage = ['/settings'];
 const isShowText = computed(

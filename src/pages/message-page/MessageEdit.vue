@@ -1,5 +1,5 @@
 <template>
-  <div class="q-py-md">
+  <div class="q-py-xs fit">
     <q-list :model-value="messageLine">
       <q-chat-message label="4月19日 10:10" />
       <q-item v-for="messageLine in messageList" :key="messageLine.id">
@@ -14,39 +14,38 @@
         </div>
       </q-item>
     </q-list>
-    <div>
-      <q-toolbar
-        class="q-pt-sm q-pb-md bg-grey-11 text-white rounded-borders footer absolute-bottom"
-      >
-        <q-input
-          class="bg-white full-width"
-          dark
-          dense
-          standout
-          v-model="text"
-          autogrow
-        >
-        </q-input>
-        <q-btn
-          v-show="isshowAdd"
-          round
-          dense
-          flat
-          icon="add"
-          class="q-ml-sm bg-grey-5"
-          @click="addClick(true)"
-        />
 
-        <q-btn
-          v-show="isshowSend"
-          round
-          flat
-          label="发送"
-          class="q-ml-sm bg-theme"
-          @click="sendClick"
-        />
-      </q-toolbar>
-    </div>
+    <q-toolbar
+      class="q-pt-sm q-pb-md bg-grey-11 text-white rounded-borders absolute-bottom"
+    >
+      <q-input
+        class="bg-white full-width"
+        dark
+        dense
+        standout
+        v-model="text"
+        autogrow
+      >
+      </q-input>
+      <q-btn
+        v-show="isshowAdd"
+        round
+        dense
+        flat
+        icon="add"
+        class="q-ml-sm bg-grey-5"
+        @click="addClick(true)"
+      />
+
+      <q-btn
+        v-show="isshowSend"
+        round
+        flat
+        label="发送"
+        class="q-ml-sm bg-theme"
+        @click="sendClick"
+      />
+    </q-toolbar>
   </div>
 </template>
 

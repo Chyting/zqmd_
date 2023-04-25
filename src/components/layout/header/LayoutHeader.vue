@@ -1,43 +1,41 @@
 <template>
-  <div>
-    <q-header
-      v-if="!isHideHeader"
-      :style="[
-        !isSubheaderHidden ? 'z-index: 100' : 'z-index: -1',
-        { background: getRootHeaderBackground },
-      ]"
-      bordered
-    >
-      <div class="row">
-        <q-toolbar>
-          <div class="col-2">
-            <q-btn
-              v-if="isBack"
-              color="white"
-              icon="arrow_back"
-              rounded
-              dense
-              flat
-              @click="goBack"
-            />
-          </div>
-          <div
-            class="col-8 text-center text-h6 text-white q-pl-lg q-pr-sm header-title"
-          >
-            <LayoutHeaderTitle />
-          </div>
+  <q-header
+    v-if="!isHideHeader"
+    :style="[
+      !isSubheaderHidden ? 'z-index: 100' : 'z-index: -1',
+      { background: getRootHeaderBackground },
+    ]"
+    bordered
+  >
+    <div class="row">
+      <q-toolbar>
+        <div class="col-2">
+          <q-btn
+            v-if="isBack"
+            color="white"
+            icon="arrow_back"
+            rounded
+            dense
+            flat
+            @click="goBack"
+          />
+        </div>
+        <div
+          class="col-8 text-center text-h6 text-white q-pl-lg q-pr-sm header-title"
+        >
+          <LayoutHeaderTitle />
+        </div>
 
-          <div class="col-2 text-center q-mr-md q-ml-sm">
-            <LayoutHeaderHome />
-          </div>
-        </q-toolbar>
-      </div>
+        <div class="col-2 text-center q-mr-md q-ml-sm">
+          <LayoutHeaderHome />
+        </div>
+      </q-toolbar>
+    </div>
 
-      <div v-if="isHideHeader" v-show="!isSubheaderHidden" class="height-200">
-        <q-scroll-observer @scroll="onScroll" />
-      </div>
-    </q-header>
-  </div>
+    <div v-if="isHideHeader" v-show="!isSubheaderHidden" class="height-200">
+      <q-scroll-observer @scroll="onScroll" />
+    </div>
+  </q-header>
 </template>
 
 <script lang="ts" setup>

@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md q-gutter-sm">
+  <div class="q-pa-md q-gutter-sm" transition-show="slide-left">
     <!--node-key包含唯一节点id的每个节点对象的属性名
     //selected 当前所选节点的键
     @update:selected="treeSelect"//当所选节点更改时发出
