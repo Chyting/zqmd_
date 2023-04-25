@@ -3,12 +3,15 @@
     <LayoutHeader :is-hide-header="isShowHeader" :is-back="isShowFooter" />
 
     <q-page-container :class="{ 'footer-padding': isShowHeader }" class="fit">
-      <transition :name="transitionName">
-        <router-view
-          class="transition_body"
-          :class="{ 'bg-grey-2': isShowHeader, 'q-px-md': !isShowHeader }"
-        />
-      </transition>
+      <router-view
+        class="transition_body"
+        v-slot="{ Component }"
+        :class="{ 'bg-grey-2': isShowHeader, 'q-px-md': !isShowHeader }"
+      >
+        <transition :name="transitionName">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </q-page-container>
 
     <LayoutFooter
