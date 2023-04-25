@@ -61,9 +61,11 @@ onMounted(() => {
   }
 });
 let transitionName = ref<string>('');
-watch(route, () => {
-  if (['/home', '/message', '/my'].indexOf(route.path) !== -1) {
-    transitionName.value = '';
+watch(route, (newVal, oldVal) => {
+  console.log('------', newVal.path, oldVal.path);
+  const baseRouteList = ['/home', '/message', '/my'];
+  if (baseRouteList.indexOf(route.path) !== -1) {
+    transitionName.value = 'slide-right';
   } else {
     transitionName.value = 'slide-left';
   }
@@ -80,27 +82,16 @@ watch(route, () => {
 .transition_body {
   transition: all 0.2s ease-out;
 }
-
-.slide-left-enter-active {
-  transition: all 0.3s ease-out;
-}
-.slide-left-leave-active {
-  transition: all 0.3s ease-out;
-}
 .slide-left-enter {
-  opacity: 1;
-  transform: translateX(200px);
+  transform: translate(100%, 0);
 }
 .slide-left-leave-active {
-  opacity: 1;
-  transform: translateX(-200px);
+  transform: translate(-50%, 0);
 }
-.slide-left-enter-from {
-  transform: translateX(200px);
-  opacity: 1;
+.slide-right-enter {
+  transform: translate(-50%, 0);
 }
-.slide-left-leave-to {
-  transform: translateX(-200px);
-  opacity: 0;
+.slide-right-leave-active {
+  transform: translate(100%, 0);
 }
 </style>
