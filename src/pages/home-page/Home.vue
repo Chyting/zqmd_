@@ -9,41 +9,41 @@
 <template>
   <q-page class="full-width" style="overflow: hidden">
     <div class="map">
+      <vc-viewer
+        @ready="onViewerReady"
+        :cesium-path="vcConfig.cesiumPath"
+        :showCredit="false"
+        :infoBox="false"
+        style="height: 1000px; width: 100%"
+      >
+        <vc-collection-billboard :billboards="billboards1">
+        </vc-collection-billboard>
+        <vc-collection-primitive>
+          <vc-collection-billboard
+            :billboards="billboards2"
+          ></vc-collection-billboard>
+        </vc-collection-primitive>
 
-        <vc-viewer
-          @ready="onViewerReady"
-          :cesium-path="vcConfig.cesiumPath"
-          :showCredit="false"
-          :infoBox="false"
-          style="height: 1000px; width: 100%"
-        >
-          <vc-collection-billboard :billboards="billboards1">
-          </vc-collection-billboard>
-          <vc-collection-primitive>
-            <vc-collection-billboard
-              :billboards="billboards2"
-            ></vc-collection-billboard>
-          </vc-collection-primitive>
-
-          <vc-layer-imagery :sort-order="20">
-            <vc-imagery-provider-tianditu
-              map-style="cva_c"
-              token="436ce7e50d27eede2f2929307e6b33c0"
-            ></vc-imagery-provider-tianditu>
-          </vc-layer-imagery>
-          <vc-layer-imagery :sort-order="12">
-            <vc-imagery-provider-tianditu
-              map-style="img_c"
-              token="436ce7e50d27eede2f2929307e6b33c0"
-              ref="provider"
-            ></vc-imagery-provider-tianditu>
-          </vc-layer-imagery>
-        </vc-viewer>
-
+        <vc-layer-imagery :sort-order="20">
+          <vc-imagery-provider-tianditu
+            map-style="cva_c"
+            token="436ce7e50d27eede2f2929307e6b33c0"
+          ></vc-imagery-provider-tianditu>
+        </vc-layer-imagery>
+        <vc-layer-imagery :sort-order="12">
+          <vc-imagery-provider-tianditu
+            map-style="img_c"
+            token="436ce7e50d27eede2f2929307e6b33c0"
+            ref="provider"
+          ></vc-imagery-provider-tianditu>
+        </vc-layer-imagery>
+      </vc-viewer>
 
       <!-- <q-icon name="eva-layers-outline" size="30px" @click="typeMap" /><br /> -->
 
-      <div class="btn_buttom text-center q-mr-sm q-pb-sm q-gutter-y-sm">
+      <div
+        class="btn_buttom text-center q-mr-sm q-pb-sm q-gutter-y-sm absolute-bottom-right"
+      >
         <div class="selete_map text-center">
           <q-fab
             square
@@ -83,32 +83,7 @@
     </div>
 
     <div class="q-mb-lg q-gutter-sm dialog-b">
-      <!-- <TakeQksb v-if="seamless" /> -->
-      <q-dialog
-        v-model="seamless"
-        persistent
-        :maximized="true"
-        seamless
-        position="bottom"
-        full-width
-      >
-        <q-card style="width: 350px">
-          <q-linear-progress :value="0.6" color="pink" />
-
-          <q-card-section class="row items-center no-wrap">
-            <div>
-              <div class="text-weight-bold">The Walker</div>
-              <div class="text-grey">Fitz & The Tantrums</div>
-            </div>
-
-            <q-space />
-
-            <q-btn flat round icon="play_arrow" />
-            <q-btn flat round icon="pause" />
-            <q-btn flat round icon="close" v-close-popup />
-          </q-card-section>
-        </q-card>
-      </q-dialog>
+      <TakeQksb v-model:isShowDialog="isShowDialog" />
     </div>
   </q-page>
 </template>
@@ -118,17 +93,15 @@ import { defineComponent, reactive, ref } from 'vue';
 
 import { flyToCamera } from 'vue-cesium/es/utils/cesium-helpers';
 
-// import TakeQksb from 'src/pages/TakeQksb.vue';
+import TakeQksb from 'src/pages/TakeQksb.vue';
 
 import { Geolocation } from '@capacitor/geolocation';
 
 // import { useQuasar } from 'quasar';
 
-console.log();
-
 export default defineComponent({
   name: 'IndexPage',
-  // components: { TakeQksb },
+  components: { TakeQksb },
   setup() {
     const vcConfig = reactive({
       cesiumPath: '/Cesium/Cesium.js',
@@ -140,13 +113,10 @@ export default defineComponent({
       console.log('选择了' + type + '类型的地图');
     };
     // const router = useRouter();
-    const seamless = ref(false);
+    let isShowDialog = ref(false);
 
     const openQksb = () => {
-      seamless.value = false;
-      console.log('=============false');
-      seamless.value = true;
-      console.log('=============true');
+      isShowDialog.value = true;
     };
     //定位  https://www.googleapis.com/' 提供的位置信息容易chaoshi
     const location = async () => {
@@ -252,7 +222,7 @@ export default defineComponent({
     return {
       vcConfig,
       ready,
-      seamless,
+      isShowDialog,
       onViewerReady,
       onClick,
       openQksb,
@@ -269,6 +239,7 @@ export default defineComponent({
 .map {
   position: relative;
 }
+
 .btn_buttom {
   position: absolute;
   bottom: 300px;
@@ -283,6 +254,7 @@ export default defineComponent({
     margin-left: 8px;
     margin-right: 8px;
   }
+
   .q-icon {
     color: $grey-7;
     background: white;
@@ -290,6 +262,7 @@ export default defineComponent({
     padding: 2px;
   }
 }
+
 .dialog-b {
   margin-bottom: 100px;
   padding-bottom: 100px;
