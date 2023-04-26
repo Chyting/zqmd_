@@ -1,40 +1,38 @@
 <template>
-  <q-page>
-    <div class="q-py-sm">
-      <q-list separator :model-value="line">
-        <q-item
-          class="q-py-md"
-          v-for="line in list"
-          :key="line.id"
-          clickable
-          v-ripple
-          @click="openEdit(line.name)"
-        >
-          <q-item-section avatar>
-            <q-avatar color="theme" text-color="white">
-              <small>{{ line.name[0] }}</small>
-              <q-badge color="red" floating>4</q-badge></q-avatar
-            >
-          </q-item-section>
+  <q-page class="q-py-sm">
+    <q-list separator :model-value="line">
+      <q-item
+        class="q-py-md"
+        v-for="line in list"
+        :key="line.id"
+        clickable
+        v-ripple
+        @click="openEdit(line.name)"
+      >
+        <q-item-section avatar>
+          <q-avatar color="theme" text-color="white">
+            <small>{{ line.name[0] }}</small>
+            <q-badge color="red" floating>4</q-badge></q-avatar
+          >
+        </q-item-section>
 
-          <q-item-section>
-            <q-item-label class="text-weight-regular">{{
-              line.name
-            }}</q-item-label>
+        <q-item-section>
+          <q-item-label class="text-weight-regular">{{
+            line.name
+          }}</q-item-label>
 
-            <q-item-label caption lines="1">
-              <span> {{ line.lastMessage }}</span>
-            </q-item-label>
-          </q-item-section>
+          <q-item-label caption lines="1">
+            <span> {{ line.lastMessage }}</span>
+          </q-item-label>
+        </q-item-section>
 
-          <q-item-section side top>
-            <q-item-label caption text-color="txt666" lines="1">{{
-              line.time
-            }}</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
-    </div>
+        <q-item-section side top>
+          <q-item-label caption text-color="txt666" lines="1">{{
+            line.time
+          }}</q-item-label>
+        </q-item-section>
+      </q-item>
+    </q-list>
   </q-page>
 </template>
 

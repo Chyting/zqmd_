@@ -108,16 +108,6 @@ const transitionName = computed(() => {
   }
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.2s ease;
-}
-
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
-}
-
 .view-in-enter-active,
 .view-out-leave-active {
   position: absolute;
