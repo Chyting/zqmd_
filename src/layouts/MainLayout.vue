@@ -26,18 +26,16 @@ import LayoutHeader from 'components/layout/header/LayoutHeader.vue';
 import LayoutFooter from 'components/layout/LayoutFooter.vue';
 import { StatusBar } from '@capacitor/status-bar';
 import { useRoute } from 'vue-router';
-import { computed, onMounted, watch, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useQuasar } from 'quasar';
-
 const route = useRoute();
+const $q = useQuasar();
 
 //当路由地址不是map时，显示头部
 const headerPages = ['/home'];
 const isShowHeader = computed(
   () => headerPages.findIndex((item) => item === route.path) !== -1
 );
-
-const $q = useQuasar();
 
 //当路由地址不是主界面tab时，隐藏footer,并显示返回键
 const footerPages = ['/home', '/message', '/my'];
@@ -75,6 +73,7 @@ watch(route, () => {
 .footer-padding {
   padding-bottom: 207px !important;
 }
+
 .footer {
   position: fixed !important;
 }

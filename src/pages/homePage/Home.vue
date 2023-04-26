@@ -93,7 +93,7 @@ import { defineComponent, reactive, ref } from 'vue';
 
 import { flyToCamera } from 'vue-cesium/es/utils/cesium-helpers';
 
-import TakeQksb from 'src/pages/TakeQksb.vue';
+import TakeQksb from 'src/pages/homePage/taskPage/TakeQksb.vue';
 
 import { Geolocation } from '@capacitor/geolocation';
 

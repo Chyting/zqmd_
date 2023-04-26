@@ -39,8 +39,6 @@
 </template>
 
 <script setup lang="ts">
-// import { number } from '@intlify/core-base';
-// import { route } from 'quasar/wrappers';
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 

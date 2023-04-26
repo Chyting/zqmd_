@@ -122,7 +122,6 @@
 </template>
 
 <script setup lang="ts">
-// import { Camera } from '@capacitor/camera';
 import { ref, reactive, watchEffect } from 'vue';
 import { Toast } from '@capacitor/toast';
 

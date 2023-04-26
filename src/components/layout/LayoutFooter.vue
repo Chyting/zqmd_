@@ -76,16 +76,8 @@ const tabsList = [
     isBradge: true,
     count: 2,
   },
-  // {
-  //   id: 3,
-  //   title: '通讯录',
-  //   key: 'list',
-  //   icon: 'list',
-  //   ref: '/list',
-  //   isBradge: false,
-  // },
   {
-    id: 4,
+    id: 3,
     title: '我的',
     key: 'my',
     icon: 'schedule',

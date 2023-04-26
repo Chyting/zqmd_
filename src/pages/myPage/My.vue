@@ -3,7 +3,6 @@
     <div>
       <p>我的</p>
       <br />
-      <!-- <q-btn label="设置" to="/settings" /> -->
     </div>
   </q-page>
 </template>
