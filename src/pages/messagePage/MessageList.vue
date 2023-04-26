@@ -2,35 +2,50 @@
   <q-page class="q-py-sm">
     <q-list separator :model-value="line">
       <q-item
-        class="q-py-md"
         v-for="line in list"
         :key="line.id"
         clickable
         v-ripple
         @click="openEdit(line.name)"
       >
-        <q-item-section avatar>
-          <q-avatar color="theme" text-color="white">
-            <small>{{ line.name[0] }}</small>
-            <q-badge color="red" floating>4</q-badge></q-avatar
-          >
-        </q-item-section>
+        <van-swipe-cell class="fit">
+          <div class="flex q-pa-xs">
+            <q-item-section avatar>
+              <q-avatar color="theme" text-color="white">
+                <small>{{ line.name[0] }}</small>
+                <q-badge color="red" floating>4</q-badge></q-avatar
+              >
+            </q-item-section>
 
-        <q-item-section>
-          <q-item-label class="text-weight-regular">{{
-            line.name
-          }}</q-item-label>
+            <q-item-section>
+              <q-item-label class="text-weight-regular">{{
+                line.name
+              }}</q-item-label>
 
-          <q-item-label caption lines="1">
-            <span> {{ line.lastMessage }}</span>
-          </q-item-label>
-        </q-item-section>
+              <q-item-label caption lines="1">
+                <span> {{ line.lastMessage }}</span>
+              </q-item-label>
+            </q-item-section>
 
-        <q-item-section side top>
-          <q-item-label caption text-color="txt666" lines="1">{{
-            line.time
-          }}</q-item-label>
-        </q-item-section>
+            <q-item-section side top>
+              <q-item-label caption text-color="txt666" lines="1">{{
+                line.time
+              }}</q-item-label>
+            </q-item-section>
+          </div>
+
+          <template #right>
+            <van-button square type="primary" dense text="标为未读" />
+            <van-button square type="warning" dense text="不显示" />
+            <van-button
+              square
+              type="danger"
+              dense
+              text="删除"
+              @click="cancel"
+            />
+          </template>
+        </van-swipe-cell>
       </q-item>
     </q-list>
   </q-page>
@@ -39,6 +54,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import { showConfirmDialog } from 'vant';
 
 const list = [
   {
@@ -176,5 +192,17 @@ const line = reactive({
 const router = useRouter();
 const openEdit = (name: string) => {
   router.push({ path: '/messageEdit', query: { id: name } });
+};
+const cancel = () => {
+  showConfirmDialog({
+    message: '确认删除吗？',
+  }).then(
+    () => {
+      console.log('删除成功');
+    },
+    () => {
+      console.log('取消了');
+    }
+  );
 };
 </script>
