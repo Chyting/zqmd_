@@ -89,6 +89,13 @@ const routes: RouteRecordRaw[] = [
           title: '任务打卡',
         },
       },
+      {
+        path: '/addContact',
+        component: () => import('src/pages/list-page/AddContact.vue'),
+        meta: {
+          title: '添加联系人',
+        },
+      },
     ],
   },
 
