@@ -6,7 +6,7 @@
       <router-view
         class="transition_body"
         v-slot="{ Component }"
-        :class="{ 'bg-grey-2': isShowHeader, 'q-px-md': !isShowHeader }"
+        :class="{ 'bg-grey-2': isShowHeader, 'q-px-xs': !isShowHeader }"
       >
         <transition :name="transitionName">
           <component :is="Component" />
