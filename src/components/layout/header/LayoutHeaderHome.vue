@@ -32,6 +32,16 @@
       dense
       flat
     />
+    <q-btn
+      v-show="isShowAddPerson"
+      behavior="mobile"
+      icon="person_add"
+      to="/addContact"
+      size="15px"
+      color="grey-2"
+      dense
+      flat
+    />
   </span>
 </template>
 
@@ -42,6 +52,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 const isshowSetting = computed(() => route.path === '/my');
 const isShowAddress = computed(() => route.path === '/message');
+const isShowAddPerson = computed(() => route.path === '/list');
 
 const showTextPage = ['/settings'];
 const isShowText = computed(
