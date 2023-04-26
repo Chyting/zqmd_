@@ -8,7 +8,7 @@
         v-slot="{ Component }"
         :class="{ 'bg-grey-2': isShowHeader, 'q-px-xs': !isShowHeader }"
       >
-        <transition :name="transitionName">
+        <transition :name="transitionName" mode="out-in">
           <component :is="Component" />
         </transition>
       </router-view>
@@ -26,10 +26,12 @@ import LayoutHeader from 'components/layout/header/LayoutHeader.vue';
 import LayoutFooter from 'components/layout/LayoutFooter.vue';
 import { StatusBar } from '@capacitor/status-bar';
 import { useRoute } from 'vue-router';
-import { computed, onMounted, ref, watch } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useQuasar } from 'quasar';
+import { useContactStore } from 'stores/contact';
 const route = useRoute();
 const $q = useQuasar();
+const contactStore = useContactStore();
 
 //当路由地址不是map时，显示头部
 const headerPages = ['/home'];
@@ -58,14 +60,18 @@ onMounted(() => {
     }
   }
 });
-let transitionName = ref<string>('');
-watch(route, () => {
-  const baseRouteList = ['/home', '/message', '/my'];
-  if (baseRouteList.indexOf(route.path) !== -1) {
-    transitionName.value = 'slide-right';
+const transitionName = computed(() => {
+  const viewDir = contactStore.viewDirection;
+  let tranName = '';
+  if (viewDir === 'left') {
+    tranName = 'view-out';
+  } else if (viewDir === 'right') {
+    tranName = 'view-in';
   } else {
-    transitionName.value = 'slide-left';
+    tranName = 'fade';
   }
+
+  return tranName;
 });
 </script>
 
@@ -77,19 +83,61 @@ watch(route, () => {
 .footer {
   position: fixed !important;
 }
-.transition_body {
-  transition: all 0.2s ease-out;
+
+@keyframes inRight {
+  0% {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
 }
-.slide-left-enter {
-  transform: translate(100%, 0);
+
+@keyframes outLeft {
+  0% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  to {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
 }
-.slide-left-leave-active {
-  transform: translate(-50%, 0);
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s ease;
 }
-.slide-right-enter {
-  transform: translate(-50%, 0);
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
-.slide-right-leave-active {
-  transform: translate(100%, 0);
+
+.view-in-enter-active,
+.view-out-leave-active {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.view-in-enter-active {
+  -webkit-animation-name: inRight;
+  animation-name: inRight;
+}
+
+.view-out-leave-active {
+  -webkit-animation-name: outLeft;
+  animation-name: outLeft;
 }
 </style>

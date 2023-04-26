@@ -4,10 +4,12 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     redirect: '/home',
+    name: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       {
         path: '/home',
+        name: 'home',
         component: () => import('src/pages/homePage/Home.vue'),
         meta: {
           title: '任务',
@@ -15,6 +17,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/message',
+        name: 'message',
         component: () => import('src/pages/messagePage/MessageList.vue'),
         meta: {
           title: '消息',
@@ -22,6 +25,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/messageEdit',
+        name: 'messageEdit',
         component: () => import('src/pages/messagePage/MessageEdit.vue'),
         meta: {
           title: '聊天',
@@ -31,6 +35,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/list',
+        name: 'list',
         component: () => import('src/pages/messagePage/FriendList.vue'),
         meta: {
           title: '通讯录',
@@ -38,6 +43,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/my',
+        name: 'my',
         component: () => import('src/pages/myPage/My.vue'),
         meta: {
           title: '我的',
@@ -45,6 +51,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/settings',
+        name: 'settings',
         component: () => import('src/pages/myPage/AppIpSettings.vue'),
         meta: {
           title: '设置',
@@ -52,6 +59,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/qksb',
+        name: 'qksb',
         component: () => import('src/pages/homePage/taskPage/TakeQksb.vue'),
         meta: {
           title: '情况上报',
@@ -59,6 +67,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/rwdk',
+        name: 'rwdk',
         component: () => import('src/pages/homePage/taskPage/TaskPunching.vue'),
 
         meta: {
@@ -67,6 +76,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/addContact',
+        name: 'addContact',
         component: () => import('src/pages/messagePage/AddContact.vue'),
         meta: {
           title: '添加联系人',

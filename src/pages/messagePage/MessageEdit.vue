@@ -1,5 +1,5 @@
 <template>
-  <div class="q-py-xs fit">
+  <q-page class="q-py-xs fit">
     <q-list :model-value="messageLine">
       <q-chat-message label="4月19日 10:10" />
       <q-item v-for="messageLine in messageList" :key="messageLine.id">
@@ -46,7 +46,7 @@
         @click="sendClick"
       />
     </q-toolbar>
-  </div>
+  </q-page>
 </template>
 
 <script setup lang="ts">
