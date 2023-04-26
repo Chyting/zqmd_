@@ -63,13 +63,7 @@ const router = useRouter();
 const goBack = () => router.go(-1);
 const scrollTopPosition = ref<number>(0);
 
-const isSubheaderHidden = computed((): boolean => {
-  if (props.isHideHeader) {
-    return true;
-  } else {
-    return false;
-  }
-});
+const isSubheaderHidden = computed((): boolean => props.isHideHeader);
 
 const onScroll = (value: QuasarScrollInterface): void => {
   scrollTopPosition.value = value.position.top;

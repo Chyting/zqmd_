@@ -55,16 +55,9 @@ import { useQuasar } from 'quasar';
 import { Filesystem } from '@capacitor/filesystem';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
-// import mittBus from 'src/utils/mittBus';
-
 const messageLine = ref('main');
 
 const $q = useQuasar();
-
-//动态设置标题
-// onMounted(() => {
-//   mittBus.emit('setTitle', route.query.id);
-// });
 
 const text = ref<string>('');
 
@@ -144,7 +137,6 @@ const jump = () => {
   location.href = 'https://www.baidu.com/';
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const addClick = (grid: any) => {
   $q.bottomSheet({
     message: '  ',
