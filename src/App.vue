@@ -14,7 +14,6 @@ router.beforeEach((to, from, next) => {
   const toIndex = list.indexOf(toName); // 进入下标
   const fromIndex = list.indexOf(fromName); // 离开下标
   let direction = '';
-  console.log('拦截到的-----------', to, from, toIndex, fromIndex);
   if (toIndex == -1 || fromIndex == -1) {
     if (to.path == '/list' && from.path == '/messageEdit') {
       direction = 'left';
