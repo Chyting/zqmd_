@@ -1,32 +1,29 @@
 <template>
   <q-dialog v-model="seamless" position="bottom" class="dialog_bottom">
-    <div class="bg-bgcolor q-px-sm">
-      <div class="no-wrap q-pt-sm" flat>
+    <div class="bg-bgcolor q-px-md">
+      <div class="no-wrap q-pt-md" flat>
         <span class="text-subtitle1 text-weight-bold">上报 </span>
         <q-icon
-          class="absolute-right q-pt-sm q-mr-sm"
+          class="absolute-right q-pt-md q-mr-sm"
           size="24px"
           name="mdi-close"
           @click="closeDialog"
         ></q-icon>
       </div>
 
-      <div class="bg-white q-mt-sm q-px-sm">
-        <div
-          class="q-pt-md no-wrap row text-center ll_selete flex items-center"
-        >
-          <div class="col-3 q-mt-none">
+      <div class="bg-white q-mt-sm q-px-md content_box">
+        <div class="q-pt-md no-wrap text-center ll_selete flex items-center">
+          <div class="q-mt-none q-ml-sm">
             <span class="text-subtitle1"> 情况类型</span>
             <span class="text-subtitle1 text-red"> *</span>
           </div>
-          <span class="col-9 text-left selete_box">
+          <span class="text-left selete_box">
             <q-btn-dropdown
               class="text-subtitle1 text-txt666"
               :label="seleteValue"
               style="font-size: 14px"
               unelevated
             >
-              <!-- :class="{ 'text-txt999': seleteValue ==="请选择事件类型"  }" -->
               <q-list :model-value="seleteDatas">
                 <q-item
                   clickable
@@ -99,7 +96,9 @@
             v-on:compositionend="importEnd()"
             v-model="contentData"
           ></textarea>
-          <p class="number">{{ conterNum }}/200</p>
+          <p class="number text-primary text-weight-bold text-overline">
+            {{ conterNum }}/200
+          </p>
         </div>
 
         <q-btn
@@ -271,6 +270,9 @@ const captureImage = async (e: Event) => {
 <style scoped lang="scss">
 .dialog_bottom {
   padding-bottom: 15px;
+  .content_box {
+    border-radius: 8px;
+  }
   .ll_selete {
     margin: auto;
     top: 0;
@@ -408,7 +410,8 @@ const captureImage = async (e: Event) => {
   }
   .number {
     position: absolute;
-    width: 95%;
+    width: 98%;
+    height: 8%;
     bottom: 0;
     padding: 0;
     text-align: right;
