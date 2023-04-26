@@ -42,13 +42,6 @@ export default defineComponent({
   setup() {
     const tab = ref(null);
     const count = ref(1);
-
-    // if (tab.value === '任务') {
-    //   count.value = 1;
-    // } else if (tab.value === '消息') {
-    //   count.value = 2;
-    // }
-
     return {
       count,
       tab,
@@ -69,7 +62,7 @@ const tabsList = [
   },
   {
     id: 2,
-    title: '消息',
+    title: '通讯',
     key: 'message',
     icon: 'chat_bubble_outline',
     ref: '/message',

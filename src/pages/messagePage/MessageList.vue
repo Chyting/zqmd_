@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-py-sm">
-    <q-list separator :model-value="line">
+    <q-list :model-value="line">
       <q-item
         v-for="line in list"
         :key="line.id"
@@ -12,8 +12,8 @@
           <div class="flex q-pa-xs">
             <q-item-section avatar>
               <q-avatar color="theme" text-color="white">
-                <small>{{ line.name[0] }}</small>
-                <q-badge color="red" floating>4</q-badge></q-avatar
+                <img :src="line.avator" />
+                <q-badge color="red" floating>2</q-badge></q-avatar
               >
             </q-item-section>
 
@@ -64,6 +64,7 @@ const list = [
     lastMessage: '你今天吃饭了吗',
     time: '1分钟前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic1.jpeg',
   },
   {
     id: 2,
@@ -72,6 +73,7 @@ const list = [
     lastMessage: '你今天加班了吗',
     time: '30分钟前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic8.jpeg',
   },
   {
     id: 3,
@@ -80,6 +82,7 @@ const list = [
     lastMessage: '今天饭真好吃',
     time: '一天前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic3.jpeg',
   },
   {
     id: 4,
@@ -88,6 +91,7 @@ const list = [
     lastMessage: '今天i额武汉人福额好吃',
     time: '一天前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic6.jpg',
   },
   {
     id: 5,
@@ -96,6 +100,7 @@ const list = [
     lastMessage: '武汉啊好的',
     time: '一天前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic7.jpeg',
   },
 
   {
@@ -105,6 +110,7 @@ const list = [
     lastMessage: '头疼',
     time: '一天前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic8.jpeg',
   },
   {
     id: 7,
@@ -113,6 +119,7 @@ const list = [
     lastMessage: '颈椎疼',
     time: '一天前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic9.jpeg',
   },
   {
     id: 8,
@@ -121,6 +128,7 @@ const list = [
     lastMessage: '真拿受压真',
     time: '一天前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic10.jpeg',
   },
   {
     id: 9,
@@ -129,6 +137,7 @@ const list = [
     lastMessage: '好瞌睡',
     time: '一天前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic2.png',
   },
   {
     id: 7,
@@ -137,6 +146,7 @@ const list = [
     lastMessage: '颈椎疼',
     time: '一天前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic1.jpeg',
   },
   {
     id: 8,
@@ -145,6 +155,7 @@ const list = [
     lastMessage: '真拿受压真',
     time: '一天前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic1.jpeg',
   },
   {
     id: 9,
@@ -153,6 +164,7 @@ const list = [
     lastMessage: '好瞌睡',
     time: '一天前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic1.jpeg',
   },
   {
     id: 10,
@@ -161,6 +173,7 @@ const list = [
     lastMessage: '颈椎疼',
     time: '一天前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic4.jpeg',
   },
   {
     id: 11,
@@ -169,6 +182,7 @@ const list = [
     lastMessage: '真拿受压真',
     time: '一天前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic7.jpeg',
   },
   {
     id: 12,
@@ -177,6 +191,7 @@ const list = [
     lastMessage: '好瞌睡',
     time: '一天前',
     to: '/messageEdit',
+    avator: 'src/assets/images/pic6.jpg',
   },
 ];
 
@@ -206,3 +221,5 @@ const cancel = () => {
   );
 };
 </script>
+
+<style lang="scss" scoped></style>

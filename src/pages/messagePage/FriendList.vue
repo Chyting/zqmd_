@@ -23,7 +23,7 @@
               >
                 <q-item-section avatar>
                   <q-avatar color="theme" text-color="white">
-                    <small>{{ line.name }}</small>
+                    <img :src="line.avator" />
                   </q-avatar>
                 </q-item-section>
 
@@ -48,20 +48,20 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 let basePersonData: object[] = ref([
-  { name: '张三', id: 1 },
-  { name: '里斯', id: 2 },
-  { name: '王', id: 3 },
-  { name: 'Params', id: 4 },
-  { name: '王二麻子', id: 5 },
-  { name: '喜喜', id: 6 },
-  { name: '剌不花', id: 7 },
-  { name: '婆婆', id: 8 },
-  { name: '徐', id: 9 },
-  { name: 've', id: 10 },
-  { name: '冰灯', id: 11 },
-  { name: '那个', id: 12 },
-  { name: '漫光', id: 13 },
-  { name: '库', id: 14 },
+  { name: '张三', id: 1, avator: 'src/assets/images/pic1.jpeg' },
+  { name: '里斯', id: 2, avator: 'src/assets/images/pic2.png' },
+  { name: '王', id: 3, avator: 'src/assets/images/pic4.jpeg' },
+  { name: 'Params', id: 4, avator: 'src/assets/images/pic3.jpeg' },
+  { name: '王二麻子', id: 5, avator: 'src/assets/images/pic6.jpg' },
+  { name: '喜喜', id: 6, avator: 'src/assets/images/pic7.jpeg' },
+  { name: '剌不花', id: 7, avator: 'src/assets/images/pic1.jpeg' },
+  { name: '婆婆', id: 8, avator: 'src/assets/images/pic2.png' },
+  { name: '徐', id: 9, avator: 'src/assets/images/pic3.jpeg' },
+  { name: 've', id: 10, avator: 'src/assets/images/pic8.jpeg' },
+  { name: '冰灯', id: 11, avator: 'src/assets/images/pic3.jpeg' },
+  { name: '那个', id: 12, avator: 'src/assets/images/pic10.jpeg' },
+  { name: '漫光', id: 13, avator: 'src/assets/images/pic2.png' },
+  { name: '库', id: 14, avator: 'src/assets/images/pic9.jpeg' },
 ]);
 let keywords: string = ref('');
 let filterData = computed(() => {

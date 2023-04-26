@@ -20,7 +20,7 @@ const routes: RouteRecordRaw[] = [
         name: 'message',
         component: () => import('src/pages/messagePage/MessageList.vue'),
         meta: {
-          title: '消息',
+          title: '通讯',
         },
       },
       {
