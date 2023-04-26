@@ -137,7 +137,7 @@ const jump = () => {
   location.href = 'https://www.baidu.com/';
 };
 
-const addClick = (grid: any) => {
+const addClick = (grid: boolean) => {
   $q.bottomSheet({
     message: '  ',
     grid,

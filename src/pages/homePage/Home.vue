@@ -106,40 +106,24 @@ export default defineComponent({
     const vcConfig = reactive({
       cesiumPath: '/Cesium/Cesium.js',
     });
-    // const accesstToken =
-    //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5Y2U0ZTk2Ni1jNzdkLTQ3OWYtYjVmYS0yMGM3YTk3NjgzMmUiLCJpZCI6Njk5Nywic2NvcGVzIjpbImFzciIsImdjIl0sImlhdCI6MTU0ODA1MTc0OH0.Csy6yyAnv6JSBppH0Ou3ahshqcHFEhP27iOz5gjQMEo';
+
     //选择地图模式
     const onClick = (type) => {
       console.log('选择了' + type + '类型的地图');
     };
-    // const router = useRouter();
+
     let isShowDialog = ref(false);
 
     const openQksb = () => {
       isShowDialog.value = true;
     };
-    //定位  https://www.googleapis.com/' 提供的位置信息容易chaoshi
+    //定位  https://www.googleapis.com/' 提供的位置信息容易超时
     const location = async () => {
       const coordinates = await Geolocation.getCurrentPosition();
       console.log(
         coordinates.coords.latitude + ',' + coordinates.coords.longitude
       );
       console.log('打印经纬度');
-      // let GPSoptions = {
-      //   timeout: 10000,
-      //   enableHighAccuracy: false,
-      //   maximumAge: 3600,
-      // };
-      // await Geolocation.getCurrentPosition(GPSoptions).then(
-      //   (position) => {
-      //     console.log('IN');
-      //     console.log(position.coords.latitude);
-      //     console.log(position.coords.longitude);
-      //   },
-      //   (error) => {
-      //     console.log('Error getting location', error);
-      //   }
-      // );
     };
     const ready = ({ Cesium, viewer }) => {
       console.log('我成功加载之后', Cesium, viewer);

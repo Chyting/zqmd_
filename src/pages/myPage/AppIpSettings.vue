@@ -57,7 +57,7 @@ isZqmdValue.value = isZqmd.value ? 'true' : 'false';
 //缓存到本地数组
 const data: Array<string> = new Array<string>();
 //读取本地缓存IP文件
-const readInfo = $q.sessionStorage.getItem('deployIp');
+const readInfo = $q.localStorage.getItem('deployIp');
 //读取的文件数据转为string
 if (JSON.stringify(readInfo) != null && JSON.stringify(readInfo) !== '') {
   const show = JSON.stringify(readInfo)
@@ -97,7 +97,7 @@ const saveInfo = () => {
   data.push(isZqmd.value ? 'true' : 'false');
 
   try {
-    $q.sessionStorage.set('deployIp', data);
+    $q.localStorage.set('deployIp', data);
 
     showToast('保存成功！');
     data.length = 0;
