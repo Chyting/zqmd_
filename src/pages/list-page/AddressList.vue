@@ -12,7 +12,7 @@
         <van-index-anchor :index="item[0]" />
         <van-cell>
           <template #icon>
-            <q-list>
+            <q-list class="fit">
               <q-item
                 class="q-py-md"
                 v-for="line in item[1]"
@@ -44,7 +44,9 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
 import pinyin from 'js-pinyin';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 let basePersonData: object[] = ref([
   { name: '张三', id: 1 },
   { name: '里斯', id: 2 },
@@ -86,5 +88,8 @@ const selectBar = (index) => {
 };
 const changeBar = (index) => {
   console.log('当前高亮的索引：', index);
+};
+const openEdit = (name: string) => {
+  router.push({ path: '/messageEdit', query: { id: name } });
 };
 </script>
