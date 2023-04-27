@@ -10,6 +10,9 @@
 
 const { configure } = require('quasar/wrappers');
 const path = require('path');
+function resolve(dir) {
+  return path.join(__dirname, dir);
+}
 
 module.exports = configure(function (/* ctx */) {
   return {
@@ -61,6 +64,11 @@ module.exports = configure(function (/* ctx */) {
       target: {
         browser: ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
         node: 'node16',
+      },
+      alias: {
+        '~': resolve('src'),
+        '@': resolve('src'),
+        assets: resolve('src/assets'),
       },
 
       vueRouterMode: 'hash', // available values: 'hash', 'history'

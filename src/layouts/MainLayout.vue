@@ -6,7 +6,7 @@
       <router-view
         class="transition_body"
         v-slot="{ Component }"
-        :class="{ 'bg-grey-2': isShowHeader, 'q-px-xs': !isShowHeader }"
+        :class="{ 'bg-grey-2': isShowHeader }"
       >
         <transition :name="transitionName" mode="out-in">
           <component :is="Component" />
@@ -28,7 +28,7 @@ import { StatusBar } from '@capacitor/status-bar';
 import { useRoute } from 'vue-router';
 import { computed, onMounted } from 'vue';
 import { useQuasar } from 'quasar';
-import { useContactStore } from 'stores/contact';
+import { useContactStore } from 'src/stores/contact';
 const route = useRoute();
 const $q = useQuasar();
 const contactStore = useContactStore();

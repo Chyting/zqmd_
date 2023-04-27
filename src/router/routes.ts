@@ -10,7 +10,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/home',
         name: 'home',
-        component: () => import('src/pages/homePage/Home.vue'),
+        component: () => import('~/pages/homePage/Home.vue'),
         meta: {
           title: '任务',
         },
@@ -18,7 +18,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/message',
         name: 'message',
-        component: () => import('src/pages/messagePage/MessageList.vue'),
+        component: () => import('@/pages/messagePage/MessageList.vue'),
         meta: {
           title: '通讯',
         },
@@ -44,7 +44,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/my',
         name: 'my',
-        component: () => import('src/pages/myPage/My.vue'),
+        component: () => import('src/pages/myPage/MyPage.vue'),
         meta: {
           title: '我的',
         },

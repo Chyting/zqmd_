@@ -68,8 +68,7 @@ watch(text, () => {
   isshowSend.value = text.value !== '';
   isshowAdd.value = text.value === '';
 });
-
-const messageList = ref<array>([
+const messageList = ref([
   {
     id: 1,
     name: '王静',
