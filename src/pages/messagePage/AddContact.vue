@@ -41,7 +41,7 @@ let contactList = ref([
   { id: '1', name: 'BHSG1', avator: 'src/assets/images/pic1.jpeg' },
   { id: '2', name: '张三丰', avator: 'src/assets/images/pic2.png' },
 ]);
-const addContact = (person) => {
+const addContact = (person: any) => {
   console.log('成功添加联系人', person.name);
 };
 </script>

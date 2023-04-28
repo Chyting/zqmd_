@@ -4,15 +4,15 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     redirect: '/home',
-    name: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       {
         path: '/home',
         name: 'home',
-        component: () => import('~/pages/homePage/Home.vue'),
+        component: () => import('~/pages/homePage/HomePage.vue'),
         meta: {
           title: '任务',
+          keepAlive: true,
         },
       },
       {
@@ -21,6 +21,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/pages/messagePage/MessageList.vue'),
         meta: {
           title: '通讯',
+          keepAlive: false,
         },
       },
       {
@@ -31,6 +32,7 @@ const routes: RouteRecordRaw[] = [
           title: '聊天',
           hideHeader: true,
           hideFooter: false,
+          keepAlive: false,
         },
       },
       {
@@ -39,6 +41,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('src/pages/messagePage/FriendList.vue'),
         meta: {
           title: '通讯录',
+          keepAlive: false,
         },
       },
       {
@@ -47,6 +50,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('src/pages/myPage/MyPage.vue'),
         meta: {
           title: '我的',
+          keepAlive: false,
         },
       },
       {
@@ -55,6 +59,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('src/pages/myPage/AppIpSettings.vue'),
         meta: {
           title: '设置',
+          keepAlive: false,
         },
       },
       {
@@ -63,6 +68,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('src/pages/homePage/taskPage/TakeQksb.vue'),
         meta: {
           title: '情况上报',
+          keepAlive: false,
         },
       },
       {
@@ -72,6 +78,7 @@ const routes: RouteRecordRaw[] = [
 
         meta: {
           title: '任务打卡',
+          keepAlive: false,
         },
       },
       {
@@ -80,6 +87,34 @@ const routes: RouteRecordRaw[] = [
         component: () => import('src/pages/messagePage/AddContact.vue'),
         meta: {
           title: '添加联系人',
+          keepAlive: false,
+        },
+      },
+      {
+        path: '/myPlace',
+        name: 'myPlace',
+        component: () => import('@/pages/myPage/myPlace/Index.vue'),
+        meta: {
+          title: '我的地点',
+          keepAlive: false,
+        },
+      },
+      {
+        path: '/historyTask',
+        name: 'historyTask',
+        component: () => import('@/pages/myPage/historyTask/Index.vue'),
+        meta: {
+          title: '历史任务',
+          keepAlive: false,
+        },
+      },
+      {
+        path: '/myReport',
+        name: 'myReport',
+        component: () => import('@/pages/myPage/myReport/Index.vue'),
+        meta: {
+          title: '我上报的',
+          keepAlive: false,
         },
       },
     ],
