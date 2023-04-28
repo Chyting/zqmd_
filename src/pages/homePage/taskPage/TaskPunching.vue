@@ -87,8 +87,8 @@ const imagevlaue = ref<ImageValue>({
   size: 0,
 });
 
-const imageList = reactive([<ImageValue>imagevlaue.value]);
-const videoList = reactive([<ImageValue>imagevlaue.value]);
+const imageList = reactive([] as ImageValue[]);
+const videoList = reactive([] as ImageValue[]);
 
 if (imagevlaue.value.src === '') {
   imageList.length = 0;

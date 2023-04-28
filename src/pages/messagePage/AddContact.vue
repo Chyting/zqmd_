@@ -10,7 +10,7 @@
       >
         <q-item-section class="col-1.5" avatar>
           <q-avatar color="theme" text-color="white">
-            <img :src="person.avator" />
+            <img :src="person.avatar" />
           </q-avatar>
         </q-item-section>
 
@@ -37,11 +37,21 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 let keywords = ref('');
-let contactList = ref([
-  { id: '1', name: 'BHSG1', avator: 'src/assets/images/pic1.jpeg' },
-  { id: '2', name: '张三丰', avator: 'src/assets/images/pic2.png' },
-]);
-const addContact = (person: any) => {
+
+interface Person {
+  id: string;
+  name: string;
+  avatar: string;
+}
+
+let contactList = ref([] as Person[]);
+
+contactList.value = [
+  { id: '1', name: 'BHSG1', avatar: 'src/assets/images/pic1.jpeg' },
+  { id: '2', name: '张三丰', avatar: 'src/assets/images/pic2.png' },
+];
+
+const addContact = (person: Person) => {
   console.log('成功添加联系人', person.name);
 };
 </script>
