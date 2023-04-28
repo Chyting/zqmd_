@@ -20,56 +20,87 @@
     <q-scroll-area
       :thumb-style="thumbStyle"
       class="full-width"
-      style="height: 500px"
+      style="height: 550px"
     >
       <q-list dense padding class="rounded-borders">
-        <q-infinite-scroll @load="onLoad" style="height: 500px">
+        <q-infinite-scroll @load="onLoad">
           <q-item
             clickable
+            v-ripple
             v-for="(item, index) in list"
-            :key="item"
-            class="caption q-py-sm"
+            :key="item.id"
+            class="caption q-py-sm row q-gutter-sm cursor-pointer"
+            style="font-size: 10px"
           >
-            <q-badge class="shadow-1" style="height: 15px" :label="index + 1">
-            </q-badge>
-            <div class="flex col"></div>
+            <q-item-section class="col-1">
+              <q-badge
+                class="shadow-1"
+                style="height: 15px; width: 20px"
+                :label="index + 1"
+              >
+              </q-badge>
+            </q-item-section>
+            <q-item-section class="col-2">
+              <span>{{ item.taskType }}</span>
+              <span>{{ item.tool }}</span>
+            </q-item-section>
+            <q-item-section class="col-5">
+              <span>{{ item.address }}</span>
+              <div class="flex justify-between">
+                <span>{{ item.timePeriod }}</span>
+                <span>{{ item.timePeriod }}</span>
+              </div>
+            </q-item-section>
+            <q-item-section class="col-3">
+              <span>{{ item.taskTime }}</span>
+            </q-item-section>
           </q-item>
         </q-infinite-scroll>
+        <q-inner-loading
+          :showing="visible"
+          label="加载中..."
+          label-class="text-teal"
+          label-style="font-size: 1.1em"
+        />
       </q-list>
     </q-scroll-area>
   </q-page>
 </template>
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue';
+import { HistoryTask } from '@/constant/historyType';
 const date = ref('');
 const show = ref(false);
-const keywords = ref(false);
+const keywords = ref<string>('');
 const thumbStyle = ref({
   width: '0',
 });
-const formatDate = (date) => `${date.getMonth() + 1}/${date.getDate()}`;
-const onConfirm = (value) => {
+const formatDate = (date: Date) => `${date.getMonth() + 1}/${date.getDate()}`;
+const onConfirm = (value: Date) => {
   show.value = false;
   date.value = formatDate(value);
 };
 
-const list = ref([]);
-const loading = ref(false);
-const finished = ref(false);
+const list = ref<HistoryTask[]>([]);
+const visible = ref<boolean>(true);
 const onLoad = () => {
   // 异步更新数据
   // setTimeout 仅做示例，真实场景中一般为 ajax 请求
   setTimeout(() => {
-    for (let i = 0; i < 50; i++) {
-      list.value.push(list.value.length + 1);
+    const obj: HistoryTask = {
+      taskType: 'XL',
+      address: '安民河桥-老丁码头-文安滩',
+      taskTime: '2023-04-11 11:42:22',
+      timePeriod: '8:30-9:30',
+      tool: '徒步+乘车',
+      distance: '8.0',
+    };
+    for (let i = 0; i < 15; i++) {
+      obj.id = i;
+      list.value.push(obj);
     }
-
-    // 加载状态结束
-    loading.value = false;
-
-    // 数据全部加载完成
-    if (list.value.length >= 40) {
-      finished.value = true;
+    if (list.value.length >= 15) {
+      visible.value = false;
     }
   }, 1000);
 };

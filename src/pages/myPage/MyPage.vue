@@ -43,7 +43,8 @@ const jumpTo = (path: string) => {
     content: '';
     width: 100%;
     height: 40px;
-    background-color: rgb(25, 148, 80);
+    border-top: none;
+    background-color: rgb(242, 243, 245);
   }
 }
 </style>
