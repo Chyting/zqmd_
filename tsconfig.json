@@ -5,7 +5,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    // "isolatedModules": true,
+    "target": "es5",
+    "lib": ["dom", "es5", "ES2015.Promise", "ES2015", "es2017"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

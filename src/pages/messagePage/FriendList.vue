@@ -15,7 +15,7 @@
             <q-list class="fit">
               <q-item
                 class="q-py-md"
-                v-for="line in item[1]"
+                v-for="line in (item[1] as any)"
                 :key="line.id"
                 clickable
                 v-ripple
@@ -43,20 +43,18 @@
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-import pinyin from 'ts-pinyin';
+import pinyin from 'js-pinyin';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-interface PersonData {
-  name: string;
+type PersonData = {
   id: number;
+  name: string;
   avator: string;
-}
+};
 
-let basePersonData = ref([] as PersonData[]);
-
-basePersonData.value = [
+let basePersonData = ref<PersonData[]>([
   { name: '张三', id: 1, avator: 'src/assets/images/pic1.jpeg' },
   { name: '里斯', id: 2, avator: 'src/assets/images/pic2.png' },
   { name: '王', id: 3, avator: 'src/assets/images/pic4.jpeg' },
@@ -71,10 +69,10 @@ basePersonData.value = [
   { name: '那个', id: 12, avator: 'src/assets/images/pic10.jpeg' },
   { name: '漫光', id: 13, avator: 'src/assets/images/pic2.png' },
   { name: '库', id: 14, avator: 'src/assets/images/pic9.jpeg' },
-];
+]);
 
 let keywords = ref<string>('');
-let filterData = computed(() => {
+let filterData = computed((): PersonData[] => {
   return refactorAddressBook(basePersonData.value);
 });
 
@@ -83,7 +81,7 @@ let indexBarRef = ref();
 const refactorAddressBook = (list: Array<PersonData>): PersonData[] => {
   let newArr = {} as any;
   list.map((child) => {
-    let letter = pinyin.getCamelChars(child.name).charAt(0);
+    let letter: string = pinyin.getCamelChars(child.name).charAt(0);
     if (newArr[letter]) {
       newArr[letter].push(child);
     } else {

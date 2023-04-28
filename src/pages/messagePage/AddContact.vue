@@ -44,12 +44,10 @@ interface Person {
   avatar: string;
 }
 
-let contactList = ref([] as Person[]);
-
-contactList.value = [
+let contactList = ref<Person[]>([
   { id: '1', name: 'BHSG1', avatar: 'src/assets/images/pic1.jpeg' },
   { id: '2', name: '张三丰', avatar: 'src/assets/images/pic2.png' },
-];
+]);
 
 const addContact = (person: Person) => {
   console.log('成功添加联系人', person.name);
