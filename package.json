@@ -23,7 +23,6 @@
     "@ionic/pwa-elements": "^3.1.1",
     "@quasar/extras": "^1.0.0",
     "axios": "^1.2.1",
-    "cesium": "^1.104.0",
     "cropperjs": "^1.5.13",
     "exif-js": "^2.3.0",
     "js-pinyin": "^0.1.9",
