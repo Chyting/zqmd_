@@ -39,6 +39,7 @@ module.exports = configure(function (/* ctx */) {
       'vue-cesium',
       'vant',
       'pinia',
+      'router-guard',
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
