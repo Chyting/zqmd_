@@ -117,6 +117,14 @@ const routes: RouteRecordRaw[] = [
           keepAlive: false,
         },
       },
+      {
+        path: '/test',
+        name: 'test',
+        component: () => import('src/components/TaskLocationTest.vue'),
+        meta: {
+          title: '测试',
+        },
+      },
     ],
   },
 

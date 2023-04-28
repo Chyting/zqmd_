@@ -20,6 +20,7 @@
       class="text-white text-center no-wrap round"
       flat
       round
+      @click="$router.push('/test')"
       label="确定"
     />
     <q-btn

@@ -21,6 +21,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'build-data.properties'
+    }
 }
 
 repositories {
@@ -28,6 +31,7 @@ repositories {
         dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
     }
 }
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')

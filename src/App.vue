@@ -28,12 +28,7 @@ const onProgressExport = async (progress: string) => {
   }
 };
 if (app != null) {
-  // !!!!! if you do not want to use the progress events !!!!!
-  // since vue-sqlite-hook 2.1.1
-  // app.appContext.config.globalProperties.$sqlite = useSQLite()
-  // before
-  // app.appContext.config.globalProperties.$sqlite = useSQLite({})
-  // !!!!!                                               !!!!!
+
   app.appContext.config.globalProperties.$sqlite = useSQLite({
     onProgressImport,
     onProgressExport,
