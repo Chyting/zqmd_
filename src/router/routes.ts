@@ -120,7 +120,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/test',
         name: 'test',
-        component: () => import('src/components/TaskLocationTest.vue'),
+        component: () => import('src/pages/myPage/TaskLocationTest.vue'),
         meta: {
           title: '测试',
         },

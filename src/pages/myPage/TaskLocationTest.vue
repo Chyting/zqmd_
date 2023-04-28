@@ -11,7 +11,7 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted, getCurrentInstance, Ref } from 'vue';
 import { SQLiteHook } from 'vue-sqlite-hook';
-import { useState } from '@/composables/state';
+import { useState } from 'src/composables/state';
 
 export default defineComponent({
   name: 'TaskLocationTest',
