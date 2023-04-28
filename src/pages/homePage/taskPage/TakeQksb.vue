@@ -134,7 +134,7 @@ const props = defineProps({
 //修改父组件的隐藏属性
 const emit = defineEmits(['update:isShowDialog']);
 //必须用reactive，ref不刷新
-let seamless = reactive(false);
+let seamless = reactive(false as any);
 //动态改变dialog是否显示，因为props的值，不能给v-model赋值
 watchEffect(() => {
   seamless = props.isShowDialog;
@@ -172,7 +172,7 @@ const conterNum = ref<number>(0);
 const cInput = ref<boolean>(false);
 
 const content = () => {
-  if (cInput.value == false) {
+  if (cInput.value == false && contentData.value) {
     conterNum.value = contentData.value.length;
   }
 };
@@ -196,15 +196,13 @@ interface ImageValue {
   src: string;
   size: number;
 }
-const imagevlaue = ref<ImageValue>({
-  key: 0,
-  name: '',
-  src: '',
-  size: 0,
-});
-const imageList = reactive([<ImageValue>imagevlaue.value]);
+
+const imagevlaue = ref<ImageValue>();
+
+const imageList: ImageValue[] = reactive([]);
+
 //默认为0，不然初始值会有一张图片
-if (imagevlaue.value.src === '') {
+if (imagevlaue.value?.src === '') {
   imageList.length = 0;
 }
 // 清空图片

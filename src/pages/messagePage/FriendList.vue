@@ -43,11 +43,20 @@
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-import pinyin from 'js-pinyin';
+import pinyin from 'ts-pinyin';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-let basePersonData: object[] = ref([
+
+interface PersonData {
+  name: string;
+  id: number;
+  avator: string;
+}
+
+let basePersonData = ref([] as PersonData[]);
+
+basePersonData.value = [
   { name: '张三', id: 1, avator: 'src/assets/images/pic1.jpeg' },
   { name: '里斯', id: 2, avator: 'src/assets/images/pic2.png' },
   { name: '王', id: 3, avator: 'src/assets/images/pic4.jpeg' },
@@ -62,16 +71,17 @@ let basePersonData: object[] = ref([
   { name: '那个', id: 12, avator: 'src/assets/images/pic10.jpeg' },
   { name: '漫光', id: 13, avator: 'src/assets/images/pic2.png' },
   { name: '库', id: 14, avator: 'src/assets/images/pic9.jpeg' },
-]);
-let keywords: string = ref('');
+];
+
+let keywords = ref<string>('');
 let filterData = computed(() => {
   return refactorAddressBook(basePersonData.value);
 });
 
 let indexBarRef = ref();
 // 重构通讯录人员数组
-const refactorAddressBook = (list: Array): object[] => {
-  let newArr = {};
+const refactorAddressBook = (list: Array<PersonData>): PersonData[] => {
+  let newArr = {} as any;
   list.map((child) => {
     let letter = pinyin.getCamelChars(child.name).charAt(0);
     if (newArr[letter]) {
@@ -83,10 +93,10 @@ const refactorAddressBook = (list: Array): object[] => {
   return newArr;
 };
 // 点击索引栏的字符
-const selectBar = (index) => {
+const selectBar = (index: number) => {
   console.log('点击的字符是：', index);
 };
-const changeBar = (index) => {
+const changeBar = (index: number) => {
   console.log('当前高亮的索引：', index);
 };
 const openEdit = (name: string) => {

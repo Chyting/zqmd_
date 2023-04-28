@@ -13,9 +13,9 @@ let title = ref<string>();
 // 监听路由变化 设置顶部标题
 watchEffect(() => {
   if (route.meta.title == '聊天') {
-    title.value = route.query.id;
+    title.value = route.query.id as string;
   } else {
-    title.value = route.meta.title;
+    title.value = <string>route.meta.title;
   }
 });
 </script>
