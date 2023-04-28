@@ -9,6 +9,7 @@
         v-for="item in btnList"
         :key="item.id"
         class="q-mr-md flex items-center relative-position"
+        @click="jumpTo(item.path)"
         v-ripple
       >
         <q-icon size="30px" :name="item.icon"></q-icon>
@@ -20,11 +21,16 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
 const btnList = ref([
-  { id: 1, event: '历史任务', icon: 'history' },
-  { id: 2, event: '我的地点', icon: 'place' },
-  { id: 3, event: '我上报的', icon: 'near_me' },
+  { id: 1, event: '历史任务', icon: 'history', path: '/historyTask' },
+  { id: 2, event: '我的地点', icon: 'place', path: '/myPlace' },
+  { id: 3, event: '我上报的', icon: 'near_me', path: '/myReport' },
 ]);
+const jumpTo = (path: string) => {
+  router.push(path);
+};
 </script>
 <style lang="scss">
 .avator_bg {
